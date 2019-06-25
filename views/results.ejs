@@ -1,0 +1,32 @@
+<% include partials/header %>
+
+<br><br>
+<div class="container">
+    <h2>Search Results</h2>
+    <br>
+
+    <div class="row">
+        <% results.forEach(function(movie) { %>
+        <div class="col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="<%= imageURL+movie.poster_path %>" style="height:100%">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight:bold"><%= movie.title %></h5>
+                    <ul class="list-group list-group-flush">
+                        <% movie.genre_ids.forEach(function(genre) { %>
+                        <li class="list-group-item"><%= genres[genre] %></li>
+                        <% }); %>
+                    </ul>
+                    <br>
+                    <center><a href="/search/<%= movie.title %>/<%= movie.id %>" class="btn btn-block btn-primary">View
+                            Details</a></center>
+                </div>
+                <br>
+            </div>
+        </div>
+        <% }); %>
+
+    </div>
+</div>
+
+<% include partials/footer %>

@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<div class="container">
+    <br><br>
+    <h3 style="font-weight:bold">Your Watchlist</h3>
+    <ul class="list-group list-group-flush">
+        <% movies.forEach(function(movie) { %>
+        <li class="list-group-item"><%= JSON.parse(movie).title %></li>
+        <% }); %>
+    </ul>
+    <br>
+    <hr style="border-color:black; border-width: 2px">
+    <br>
+    <h4 style="font-weight: bold">Movies Recommended for You...</h4>
+    <ul class="list-group list-group-flush">
+        <% rec.forEach(function(movie) { %>
+        <li class="list-group-item"><%= movie.title %></li>
+        <% }) %>
+    </ul>
+
+</div>
+
+<% include partials/footer %>

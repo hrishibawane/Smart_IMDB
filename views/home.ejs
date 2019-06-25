@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+<div class="container">
+    <br>
+    <!-- <center>
+        <h3>Welcome To Recipe</h3>
+    </center> -->
+
+
+    <div class="jumbotron">
+        <center>
+            <h1 class="display-5" style="font-weight: bold">Welcome to MyIMDB</h1>
+            <br>
+            <p>A Smart Movies recommendation App and much more...</p>
+        </center>
+        <hr class="my-4">
+        <p class="lead">
+            <p>Let us find Entertainment for you...</p>
+            <p><i>What would you like to watch today?</i></p>
+
+            <form method="POST" action="/search">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="movie" placeholder="Search Movies">
+                    <!-- <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button">
+                            <i class="fa fa-search">Search</i>
+                        </button>
+                    </div> -->
+                    <br>
+                    <button class="btn btn-sm btn-secondary">SEARCH</button>
+                </div>
+                
+            </form>
+            <br>
+        </p>
+    </div>
+
+
+</div>
+
+<% include partials/footer %>

@@ -1,0 +1,25 @@
+<% include partials/header %>
+
+<div class="container">
+    <br>
+    <h3>Top Rated Movies of All Time</h3>
+    <br>
+
+    <ul class="list-group">
+        <% results.forEach(function(movie) { %>
+        <div class="list-group-item" style="padding: 3px; border-radius: 10px; border-style: solid; border-width: 2px;">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img src="<%= imageURL+movie.poster_path %>" style="margin:20px; width: 100px; height: 100px;">
+                </div>
+                <div class="col-xs-6">
+                    <a href="/search/<%=movie.title%>/<%=movie.id%>" style="margin:15px; text-decoration: none; color:darkcyan"><h5><%= movie.title %></h5></a>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </ul>
+
+</div>
+
+<% include partials/footer %>

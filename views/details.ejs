@@ -1,0 +1,74 @@
+<% include partials/header %>
+
+<div class="container">
+    <br>
+    <center>
+        <h2 style="font-weight: bold"><%= movie.title %></h2>
+    </center>
+    <br>
+
+    <div class="row">
+
+        <div class="col-sm-6" style="padding:10px; border-style:solid; border-width:1px; border-color:darkgrey">
+            <img src="<%= imageURL+movie.poster_path %>" />
+        </div>
+        <div class="col-sm-6" style="padding:10px; border-style:solid; border-width:1px; border-color:darkgrey">
+            <p>Genres:</p>
+            <ul class="list-group list-group-flush">
+                <% movie.genres.forEach(function(genre) { %>
+                <li class="list-group-item"><%= genre.name %></li>
+                <% }); %>
+            </ul>
+            <br>
+            <p>Runtime: <%= movie.runtime %> mins</p>
+            <p>Original Language:
+                <% if(movie.original_language=="en") { %>
+                English
+                <% } else { %>
+                Hindi
+                <% } %>
+            </p>
+            <p>Release Date: <%= movie.release_date %></p>
+            <a href="<%=movie.homepage%>">Go to movie's homepage</a>
+            <br>
+        </div>
+    </div>
+    <br>
+    <h4>Storyline</h4>
+    <p><%= movie.overview %></p>
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <form method="POST" action="/watchlist">
+                <input type="hidden" name="title" value="<%= movie.title %>">
+                <input type="hidden" name="genre" value="<%= movie.genres[0].id %>">
+                <button class="btn btn-secondary" style="margin:10px">Add to Watchlist</button>
+            </form>
+        </div>
+        <div class="col-xs-6">
+            <form>
+                <button class="btn btn-secondary" style="margin:10px">Share with Friends</button>
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <div>
+        <h5>Comments:</h5>
+        <form class="form-signin" action="/<%=movie.id%>/comments" method="POST">
+            <input type="hidden" name="id" value="<%= movie.id %>">
+            <textarea class="form-control" id="textArea1" rows="2" name="comment"
+                placeholder="Join the discussion..."></textarea>
+            <br>
+            <button class="btn btn-sm btn-info">POST</button>
+        </form>
+        <br>
+        <ul class="list-group">
+            <% comments.forEach(function(comm) { %>
+            <li class="list-group-item"><%=comm%></li>
+            <% }); %>
+        </ul>
+    </div>
+
+</div>
+
+<% include partials/footer %>
